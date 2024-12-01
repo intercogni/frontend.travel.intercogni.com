@@ -14,14 +14,23 @@ export default function HomePage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 bg-blobs flex flex-col justify-center items-center text-white relative overflow-hidden">
-			<div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-800 to-purple-800 opacity-70"></div>
+		<div className="min-h-screen flex flex-col justify-center items-center text-white relative overflow-hidden">
+			<video 
+				autoPlay 
+				loop 
+				muted 
+				className="absolute inset-0 w-full h-full object-cover -z-10"
+			>
+				<source src="homepage_background_video.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+			<div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-800 to-pink-800 opacity-50"></div>
 			<div className="text-center space-y-8 p-6 md:p-12">
 				<h1 className="text-4xl font-bold tracking-tight">
 					🌍✈️🧳 travel with ease, travel with intercogni
 				</h1>
 				<p className="text-lg max-w-md mx-auto">
-		  			a trip to wherever you want, only a click away
+					a trip to wherever you want, only a click away
 				</p>
 		
 				{session ? (
