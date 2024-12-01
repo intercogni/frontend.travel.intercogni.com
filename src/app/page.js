@@ -43,11 +43,11 @@ export default function HomePage() {
 				) : (
 					<div className="space-y-4 flex flex-col items-center">
 						<button
-							onClick={() => signIn("google")}
-							className="px-6 py-2 bg-pink-500 rounded-full text-lg hover:bg-pink-800 transition duration-300 flex items-center"
+							onClick={() => signIn("github")}
+							className="px-6 py-2 bg-gray-800 rounded-full text-lg hover:bg-gray-700 transition duration-300 flex items-center"
 						>
-							<img src="google_icon_512.webp" alt="google_icon" className="w-6 h-6 mr-2" /> 
-							<span>Log in with Google</span>
+							<img src="github_icon.png" alt="GitHub Logo" className="w-6 h-6 mr-2 invert" /> 
+							<span>Sign in with GitHub</span>
 						</button>
 					</div>
 				)}
