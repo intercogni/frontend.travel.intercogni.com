@@ -35,18 +35,18 @@ export default function HomePage() {
 		
 				{session ? (
 					<div className="space-y-4">
-						<h2 className="text-2xl">Welcome back, <strong>{session.user.name}</strong>! 👋</h2>
+						<h2 className="text-2xl">welcome back, <strong>{session.user.name}</strong>! 👋</h2>
 						<button 
 							onClick={() => signOut()}
 							className="px-6 py-2 bg-gray-800 rounded-full text-lg hover:bg-gray-700 transition duration-300"
 						>
-							🚪Sign out
+							🚪sign out
 						</button>
 						<button 
 							onClick={handleDashboardRedirect}
 							className="ml-4 px-6 py-2 bg-indigo-600 rounded-full text-lg hover:bg-indigo-500 transition duration-300"
 						>
-							📊 Go to Dashboard
+							🌍 go to your dashboard
 						</button>
 					</div>
 				) : (
