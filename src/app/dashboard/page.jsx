@@ -313,94 +313,97 @@ const Dashboard = () => {
    }, [formData.inbound_trip.arrival_feeder.budget])
 
    useEffect(() => {
-      console.log("changing prices")
-      const outbound_trip_departure_feeder_price = general_info.origin_airport.to_before * outbound_departure_feeder_multiplier
-      const outbound_trip_trunk_price = general_info.origin_airport.to_next * outbound_flight_multiplier
-      const outbound_trip_arrival_feeder_price = general_info.destination_airport.to_next * outbound_arrival_feeder_multiplier
-      const vacation_hotel_price = vacation_hotel_multiplier
-      const vacation_sightseeing_price = vacation_sightseeing_multiplier
-      const inbound_trip_departure_feeder_price = general_info.origin_airport.to_before * inbound_departure_feeder_multiplier
-      const inbound_trip_trunk_price = general_info.origin_airport.to_next * inbound_flight_multiplier
-      const inbound_trip_arrival_feeder_price = general_info.destination_airport.to_next * inbound_arrival_feeder_multiplier
+      if (session) {
+         console.log("changing prices")
+         const outbound_trip_departure_feeder_price = general_info.origin_airport.to_before * outbound_departure_feeder_multiplier
+         const outbound_trip_trunk_price = general_info.origin_airport.to_next * outbound_flight_multiplier
+         const outbound_trip_arrival_feeder_price = general_info.destination_airport.to_next * outbound_arrival_feeder_multiplier
+         const vacation_hotel_price = vacation_hotel_multiplier
+         const vacation_sightseeing_price = vacation_sightseeing_multiplier
+         const inbound_trip_departure_feeder_price = general_info.origin_airport.to_before * inbound_departure_feeder_multiplier
+         const inbound_trip_trunk_price = general_info.origin_airport.to_next * inbound_flight_multiplier
+         const inbound_trip_arrival_feeder_price = general_info.destination_airport.to_next * inbound_arrival_feeder_multiplier
 
-      const outbound_trip_total_price = (
-         outbound_trip_departure_feeder_price +
-         outbound_trip_trunk_price +
-         outbound_trip_arrival_feeder_price
-      )
-      const vacation_total_price = (
-         vacation_hotel_price +
-         vacation_sightseeing_price
-      )
-      const inbound_trip_total_price = (
-         inbound_trip_departure_feeder_price +
-         inbound_trip_trunk_price +
-         inbound_trip_arrival_feeder_price
-      )
+         const outbound_trip_total_price = (
+            outbound_trip_departure_feeder_price +
+            outbound_trip_trunk_price +
+            outbound_trip_arrival_feeder_price
+         )
+         const vacation_total_price = (
+            vacation_hotel_price +
+            vacation_sightseeing_price
+         )
+         const inbound_trip_total_price = (
+            inbound_trip_departure_feeder_price +
+            inbound_trip_trunk_price +
+            inbound_trip_arrival_feeder_price
+         )
+            
+         const registrar_email = session.user.email
+         const vacation_day_count = Math.round((new Date(formData.end_date) - new Date(formData.start_date)) / (1000 * 60 * 60 * 24)) - 2
+         const price_per_pax = outbound_trip_total_price + vacation_total_price + inbound_trip_total_price
+         const total_price = price_per_pax * formData.persons.length
 
-      const vacation_day_count = Math.round((new Date(formData.end_date) - new Date(formData.start_date)) / (1000 * 60 * 60 * 24)) - 2
-      const price_per_pax = outbound_trip_total_price + vacation_total_price + inbound_trip_total_price
-      const total_price = price_per_pax * formData.persons.length
-
-      setFormData(prevData => ({
-         ...prevData,
-         outbound_trip: {
-            ...prevData.outbound_trip,
-            departure_feeder: {
-               ...prevData.outbound_trip.departure_feeder,
-               origin_city: general_info.origin.city,
-               destination_city: general_info.origin_airport.name,
-               price: outbound_trip_departure_feeder_price,
-               to_next: general_info.origin_airport.to_before
+         setFormData(prevData => ({
+            ...prevData,
+            registrar_email: registrar_email,
+            outbound_trip: {
+               ...prevData.outbound_trip,
+               departure_feeder: {
+                  ...prevData.outbound_trip.departure_feeder,
+                  origin_city: general_info.origin.city,
+                  destination_city: general_info.origin_airport.name,
+                  price: outbound_trip_departure_feeder_price,
+                  to_next: general_info.origin_airport.to_before
+               },
+               trunk: {
+                  ...prevData.outbound_trip.trunk,
+                  origin_city: general_info.origin_airport.iata_code,
+                  destination_city: general_info.destination_airport.iata_code,
+                  price: outbound_trip_trunk_price,
+                  to_next: general_info.origin_airport.to_next
+               },
+               arrival_feeder: {
+                  ...prevData.outbound_trip.arrival_feeder,
+                  origin_city: general_info.destination_airport.name,
+                  destination_city: general_info.destination.city,
+                  price: outbound_trip_arrival_feeder_price,
+                  to_before: general_info.destination_airport.to_next
+               },
+               total_price: outbound_trip_total_price
             },
-            trunk: {
-               ...prevData.outbound_trip.trunk,
-               origin_city: general_info.origin_airport.iata_code,
-               destination_city: general_info.destination_airport.iata_code,
-               price: outbound_trip_trunk_price,
-               to_next: general_info.origin_airport.to_next
+            vacation: {
+               ...prevData.vacation,
+               total_price: vacation_total_price
             },
-            arrival_feeder: {
-               ...prevData.outbound_trip.arrival_feeder,
-               origin_city: general_info.destination_airport.name,
-               destination_city: general_info.destination.city,
-               price: outbound_trip_arrival_feeder_price,
-               to_before: general_info.destination_airport.to_next
+            vacation_day_count: vacation_day_count,
+            inbound_trip: {
+               ...prevData.inbound_trip,
+               departure_feeder: {
+                  ...prevData.inbound_trip.departure_feeder,
+                  destination_city: general_info.destination_airport.city,
+                  origin_city: general_info.destination.city,
+                  price: inbound_trip_departure_feeder_price
+               },
+               trunk: {
+                  ...prevData.inbound_trip.trunk,
+                  destination_city: general_info.origin_airport.city,
+                  origin_city: general_info.destination_airport.city,
+                  price: inbound_trip_trunk_price
+               },
+               arrival_feeder: {
+                  ...prevData.inbound_trip.arrival_feeder,
+                  destination_city: general_info.origin.city,
+                  origin_city: general_info.origin_airport.city,
+                  price: inbound_trip_arrival_feeder_price
+               },
+               total_price: inbound_trip_total_price
             },
-            total_price: outbound_trip_total_price
-         },
-         vacation: {
-            ...prevData.vacation,
-            total_price: vacation_total_price
-         },
-         vacation_day_count: vacation_day_count,
-         inbound_trip: {
-            ...prevData.inbound_trip,
-            departure_feeder: {
-               ...prevData.inbound_trip.departure_feeder,
-               destination_city: general_info.destination_airport.city,
-               origin_city: general_info.destination.city,
-               price: inbound_trip_departure_feeder_price
-            },
-            trunk: {
-               ...prevData.inbound_trip.trunk,
-               destination_city: general_info.origin_airport.city,
-               origin_city: general_info.destination_airport.city,
-               price: inbound_trip_trunk_price
-            },
-            arrival_feeder: {
-               ...prevData.inbound_trip.arrival_feeder,
-               destination_city: general_info.origin.city,
-               origin_city: general_info.origin_airport.city,
-               price: inbound_trip_arrival_feeder_price
-            },
-            total_price: inbound_trip_total_price
-         },
-         price_per_pax: price_per_pax,
-         total_price: total_price,
-         origin: general_info.origin.city,
-         destination: general_info.destination.city
-      }))
+            price_per_pax: price_per_pax,
+            total_price: total_price,
+            origin: general_info.origin.city,
+            destination: general_info.destination.city
+      }))}
    }, [
       general_info.origin_airport.to_before,
       general_info.origin_airport.to_next,
