@@ -1,6 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌍 frontend.travel.intercogni.com
 
-## Getting Started
+## 👥 Collaborators
+
+- **Name:** Taib Izzat Samawi
+   - **NRP:** 5025221085
+   - **Class:** IUP
+
+- **Name:** Franshel Traneta
+   - **ID:** 5025221083
+   - **Class:** IUP
+
+`frontend.travel.intercogni.com` is the frontend implementation of a travel booking system that allows users to create, retrieve, and delete complex travel bookings. It includes functionalities for managing trips, vacations, and associated people.
+
+## 🛠️ Installation
 
 First, run the development server:
 
@@ -14,11 +26,9 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The frontend runs a web server on `http://localhost:3000`. You can interact with the frontend using your preferred browser.
 
 ## App Interface
 
