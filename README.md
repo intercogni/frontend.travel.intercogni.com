@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## App Interface
+
+### Home Page
+![image](https://github.com/user-attachments/assets/22d44123-1e9f-443f-9491-3bd5d0b6aa93)
+
+### User Home Page
+![user homepage](https://github.com/user-attachments/assets/4cf3218f-2a79-47bf-8c15-d5bb1466ef38)
+
+### User Dashboard
+![user dashboard](https://github.com/user-attachments/assets/db1a496f-7dae-4bf8-b058-939f67f889b8)
+
+### Travel Plan and Itinerary
+<img width="1280" alt="Screenshot 2024-12-11 at 11 48 22" src="https://github.com/user-attachments/assets/f8e4e031-c30d-426a-879a-628e612b11a7">
+<img width="1280" alt="Screenshot 2024-12-11 at 11 48 35" src="https://github.com/user-attachments/assets/dfbfffc4-b27b-4668-9355-d82fe07c412f">
+<img width="1280" alt="Screenshot 2024-12-11 at 11 52 38" src="https://github.com/user-attachments/assets/1ef0a1e1-a9f7-4974-b7aa-dc340f6c44e5">
+
+### Booking Confirmation
+<img width="1280" alt="Screenshot 2024-12-11 at 11 53 51" src="https://github.com/user-attachments/assets/120e0f73-81d7-4a02-b56b-6f3d4787e2b2">
+<img width="1280" alt="Screenshot 2024-12-11 at 11 55 56" src="https://github.com/user-attachments/assets/380adf5b-f0df-4b9d-b043-f9de83e4ccb2">
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
