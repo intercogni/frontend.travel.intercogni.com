@@ -42,8 +42,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 <img width="1280" alt="Screenshot 2024-12-11 at 11 58 56" src="https://github.com/user-attachments/assets/1c4a8b16-ad06-433f-9d21-9a38eb3cff0f">
 
 ## App Demo Video
-[
-](https://www.youtube.com/watch?v=3wXrysaQJ7o)
+https://www.youtube.com/watch?v=3wXrysaQJ7o
 
 ## Learn More
 
